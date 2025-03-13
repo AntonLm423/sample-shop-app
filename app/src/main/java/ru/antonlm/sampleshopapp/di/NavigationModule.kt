@@ -1,10 +1,11 @@
 package ru.antonlm.sampleshopapp.di
 
 import dagger.Module
+import ru.antonlm.catalog.di.CatalogEntryModule
 
 @Module(
     includes = [
-        // TODO:
+        CatalogEntryModule::class
     ]
 )
 interface NavigationModule

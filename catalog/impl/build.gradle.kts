@@ -1,16 +1,19 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kapt)
 }
 
 android {
-    namespace = "ru.antonlm.data"
+    namespace = "ru.antonlm.catalog.impl"
 }
 
 dependencies {
     // modules
     implementation(project(":common"))
+    api(project(":catalog:api"))
+    implementation(project(":data:api"))
 
     // android
     implementation(libs.androidx.core.ktx)
@@ -23,4 +26,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // dagger
+    implementation(libs.dagger)
+    kapt(libs.daggerCompiler)
 }

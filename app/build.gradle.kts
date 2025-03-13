@@ -30,8 +30,9 @@ android {
 
 dependencies {
     // modules
-    implementation(project(":data:impl"))
     implementation(project(":common"))
+    implementation(project(":data:impl"))
+    implementation(project(":catalog:impl"))
 
     // android
     implementation(libs.androidx.core.ktx)

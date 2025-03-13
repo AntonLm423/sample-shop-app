@@ -2,7 +2,9 @@ package ru.antonlm.sampleshopapp
 
 import android.app.Application
 import ru.antonlm.common.di.DaggerCommonComponent
+import ru.antonlm.data.di.DaggerDataComponent
 import ru.antonlm.sampleshopapp.di.AppProvider
+import ru.antonlm.sampleshopapp.di.DaggerAppComponent
 
 class SampleShopApp : Application() {
 
