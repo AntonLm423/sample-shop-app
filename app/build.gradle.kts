@@ -7,12 +7,9 @@ plugins {
 
 android {
     namespace = "ru.antonlm.sampleshopapp"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "ru.antonlm.sampleshopapp"
-        minSdk = 24
-        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -25,31 +22,33 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
         compose = true
     }
 }
 
 dependencies {
+    // modules
+    implementation(project(":data:impl"))
+    implementation(project(":common"))
+
+    // android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    // compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // dagger
     implementation(libs.dagger)
+    kapt(libs.daggerCompiler)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    kapt(libs.daggerCompiler)
 }

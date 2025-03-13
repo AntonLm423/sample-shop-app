@@ -21,4 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "sample-shop-app"
 include(":app")
- 
+
+include(":common")
+
+include(":data:api")
+include(":data:impl")
