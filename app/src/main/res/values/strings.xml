@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">sample-shop-app</string>
+    <string name="not_yet_implemented">Функционал еще не реализован</string>
+
+    <!-- Menu -->
+    <string name="menu_catalog">Каталог</string>
+    <string name="menu_favorite">Избранное</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="common_retry">Повторить</string>
 </resources>

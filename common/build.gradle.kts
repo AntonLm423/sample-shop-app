@@ -22,6 +22,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    // lottie
+    implementation(libs.lottie.compose)
+
     // navigation
     implementation(libs.androidx.navigation.compose)
 

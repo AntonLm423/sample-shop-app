@@ -39,6 +39,18 @@ suspend fun <T : Any> NetworkResult<T>.onException(
     }
 }
 
+suspend fun <T : Any> NetworkResult<T>.onFailure(
+    executable: suspend (message: String?) -> Unit
+): NetworkResult<T> = apply {
+    if (this is NetworkResult.Error<T>) {
+        executable(message)
+    }
+
+    if(this is NetworkResult.Exception<T>) {
+        executable(e.message)
+    }
+}
+
 fun <T : Any, R : Any> NetworkResult<T>.map(mapper: (T) -> R): NetworkResult<R> =
     when (this) {
         is NetworkResult.Success -> NetworkResult.Success(mapper(data))

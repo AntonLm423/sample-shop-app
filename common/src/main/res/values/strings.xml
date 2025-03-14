@@ -1,0 +1,7 @@
+<resources>
+    <string name="common_retry">Повторить</string>
+
+    <!-- Errors -->
+    <string name="error_no_internet_title">Нет соединения</string>
+    <string name="error_no_internet_message">Убедитесь, что ваше устройство подключено к интернету, и попробуйте снова.</string>
+</resources>

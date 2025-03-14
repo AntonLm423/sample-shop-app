@@ -1,9 +1,8 @@
 package ru.antonlm.data.remote
 
-import retrofit2.Response
 import retrofit2.http.GET
+import ru.antonlm.common.domain.Product
 import ru.antonlm.common.utils.NetworkResult
-import ru.antonlm.data.remote.model.ProductsResponse
 
 interface ApiService {
 
@@ -12,5 +11,5 @@ interface ApiService {
     }
 
     @GET("products")
-    suspend fun getProducts(): NetworkResult<ProductsResponse>
+    suspend fun getProducts(): NetworkResult<List<Product>>
 }
