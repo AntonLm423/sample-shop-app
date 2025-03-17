@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
@@ -31,7 +32,11 @@ import ru.antonlm.sampleshopapp.R
 
 @Composable
 fun BottomNavigation(navController: NavController, destinations: Destinations) {
-    Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.padding(vertical = 4.dp)) {
+    Row(
+        verticalAlignment = Alignment.Top,
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier.padding(vertical = 4.dp)
+    ) {
         BottomNavItem(
             isSelected = true,
             icon = Icons.Outlined.Home,
@@ -77,9 +82,10 @@ fun BottomNavItem(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
+            .height(56.dp)
             .fillMaxWidth()
             .clickable(
-                indication = ripple(bounded = false),
+                indication = ripple(),
                 interactionSource = remember { MutableInteractionSource() },
                 onClick = { onClick.invoke() })
     ) {

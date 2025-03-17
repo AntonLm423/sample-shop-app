@@ -1,7 +1,14 @@
 <resources>
+
+    <!-- Common strings -->
     <string name="common_retry">Повторить</string>
+    <string name="common_product_image_cont_desc">Изображение товара</string>
+    <string name="common_price_in_rubbles">%s ₽</string>
 
     <!-- Errors -->
     <string name="error_no_internet_title">Нет соединения</string>
-    <string name="error_no_internet_message">Убедитесь, что ваше устройство подключено к интернету, и попробуйте снова.</string>
+    <string name="error_no_internet_message">Убедитесь, что ваше устройство подключено к интернету, и попробуйте снова</string>
+    <string name="error_default_title">Произошла непредвиденная ошибка</string>
+    <string name="error_default_message">Попробуйте повторить запрос</string>
+
 </resources>

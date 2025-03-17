@@ -25,7 +25,7 @@ import ru.antonlm.sampleshopapp.ui.theme.SampleshopappTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
+        enableEdgeToEdge()
 
         setContent {
             SampleshopappTheme {

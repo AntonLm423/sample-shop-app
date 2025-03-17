@@ -25,6 +25,9 @@ dependencies {
     // lottie
     implementation(libs.lottie.compose)
 
+    // coil
+    implementation(libs.coil.compose)
+
     // navigation
     implementation(libs.androidx.navigation.compose)
 

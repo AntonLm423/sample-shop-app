@@ -27,9 +27,9 @@ import ru.antonlm.common.R
 @Composable
 fun ErrorState(
     modifier: Modifier = Modifier,
-    @StringRes titleResId: Int? = null,
+    @StringRes titleResId: Int? = R.string.error_default_title,
     titleString: String? = null,
-    @StringRes messageResId: Int? = null,
+    @StringRes messageResId: Int? = R.string.error_default_title,
     messageString: String? = null,
     @StringRes buttonTextResId: Int? = null,
     onButtonClick: (() -> Unit)? = null,
