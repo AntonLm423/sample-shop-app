@@ -6,9 +6,14 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
@@ -20,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -35,7 +41,8 @@ fun BottomNavigation(navController: NavController, destinations: Destinations) {
     Row(
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.padding(vertical = 4.dp)
+        modifier = Modifier
+            .padding(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding())
     ) {
         BottomNavItem(
             isSelected = true,
@@ -83,11 +90,12 @@ fun BottomNavItem(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .height(56.dp)
-            .fillMaxWidth()
+            .clip(RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp))
             .clickable(
                 indication = ripple(),
                 interactionSource = remember { MutableInteractionSource() },
                 onClick = { onClick.invoke() })
+            .padding(vertical = 4.dp)
     ) {
         Icon(imageVector = icon, contentDescription = title, tint = color)
         Text(text = title, color = color)

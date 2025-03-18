@@ -1,6 +1,7 @@
 package ru.antonlm.catalog.ui
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -52,37 +53,32 @@ fun CatalogScreen(viewModel: CatalogViewModel, onProductClick: (productId: Int) 
     var isRefreshing by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
-    Scaffold(
-        topBar = {
-            CatalogAppBar()
-        },
-        content = { paddingValues ->
-            PullToRefreshBox(
-                modifier = Modifier.padding(paddingValues),
-                isRefreshing = isRefreshing,
-                onRefresh = {
-                    coroutineScope.launch {
-                        isRefreshing = true
-                        viewModel.getProducts()
-                        delay(250L)
-                        isRefreshing = false
-                    }
-                },
-                state = pullToRefreshState,
-                indicator = {
-                    Indicator(
-                        modifier = Modifier.align(Alignment.TopCenter),
-                        isRefreshing = isRefreshing,
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        state = pullToRefreshState
-                    )
-                },
-            ) {
-                DisplayState(state = state, onRefresh = viewModel::getProducts, onProductClick = onProductClick)
-            }
+    Column {
+        CatalogAppBar()
+        PullToRefreshBox(
+            isRefreshing = isRefreshing,
+            onRefresh = {
+                coroutineScope.launch {
+                    isRefreshing = true
+                    viewModel.getProducts()
+                    delay(250L)
+                    isRefreshing = false
+                }
+            },
+            state = pullToRefreshState,
+            indicator = {
+                Indicator(
+                    modifier = Modifier.align(Alignment.TopCenter),
+                    isRefreshing = isRefreshing,
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    state = pullToRefreshState
+                )
+            },
+        ) {
+            DisplayState(state = state, onRefresh = viewModel::getProducts, onProductClick = onProductClick)
         }
-    )
+    }
 }
 
 @Composable
