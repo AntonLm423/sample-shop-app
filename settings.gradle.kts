@@ -29,3 +29,6 @@ include(":data:impl")
 
 include(":catalog:api")
 include(":catalog:impl")
+
+include(":product:api")
+include(":product:impl")

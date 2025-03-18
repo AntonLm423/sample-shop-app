@@ -6,6 +6,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,8 +18,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -41,12 +44,11 @@ fun BottomNavigation(navController: NavController, destinations: Destinations) {
     Row(
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier
-            .padding(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding())
+        modifier = Modifier.padding(bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding())
     ) {
         BottomNavItem(
             isSelected = true,
-            icon = Icons.Outlined.Home,
+            icon = Icons.Outlined.Menu,
             titleResId = R.string.menu_catalog,
             onClick = {
                 val route = destinations.find<CatalogEntry>().featureRoute
@@ -95,9 +97,9 @@ fun BottomNavItem(
                 indication = ripple(),
                 interactionSource = remember { MutableInteractionSource() },
                 onClick = { onClick.invoke() })
-            .padding(vertical = 4.dp)
     ) {
-        Icon(imageVector = icon, contentDescription = title, tint = color)
-        Text(text = title, color = color)
+        Icon(imageVector = icon, contentDescription = title, tint = color, modifier = Modifier.padding(top = 6.dp))
+        Text(text = title, color = color, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(top = 2.dp))
+        Spacer(modifier = Modifier.height(4.dp))
     }
 }
