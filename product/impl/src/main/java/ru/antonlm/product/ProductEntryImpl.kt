@@ -1,20 +1,17 @@
-package ru.antonlm.catalog
+package ru.antonlm.product
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
-import ru.antonlm.catalog.di.DaggerCatalogComponent
-import ru.antonlm.catalog.ui.CatalogScreen
 import ru.antonlm.common.di.Destinations
 import ru.antonlm.common.di.LocalCommonProvider
-import ru.antonlm.common.di.find
 import ru.antonlm.common.di.injectedViewModel
 import ru.antonlm.data.LocalDataProvider
-import ru.antonlm.product.ProductEntry
+import ru.antonlm.product.di.DaggerProductComponent
+import ru.antonlm.product.ui.ProductScreen
 import javax.inject.Inject
 
-class CatalogEntryImpl @Inject constructor() : CatalogEntry() {
+class ProductEntryImpl @Inject constructor() : ProductEntry() {
 
     @Composable
     override fun Composable(
@@ -24,22 +21,15 @@ class CatalogEntryImpl @Inject constructor() : CatalogEntry() {
     ) {
         val dataProvider = LocalDataProvider.current
         val commonProvider = LocalCommonProvider.current
-        val catalogViewModel = injectedViewModel {
-            DaggerCatalogComponent.builder()
+
+         val productViewModel = injectedViewModel {
+            DaggerProductComponent.builder()
                 .dataProvider(dataProvider)
                 .commonProvider(commonProvider)
                 .build()
                 .viewModel
         }
 
-        CatalogScreen(
-            viewModel = catalogViewModel,
-            onProductClick = { productId ->
-                val destination = destinations
-                    .find<ProductEntry>()
-                    .destination(productId = productId)
-                navController.navigate(destination)
-            }
-        )
+        ProductScreen(productViewModel, "123")
     }
 }

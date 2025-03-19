@@ -33,6 +33,7 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":data:impl"))
     implementation(project(":catalog:impl"))
+    implementation(project(":product:impl"))
 
     // android
     implementation(libs.androidx.core.ktx)
